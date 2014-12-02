@@ -8,6 +8,9 @@ FactoryGirl.define do
     factory :photo_with_advert do
       association :advert
     end
+    factory :photo_invalid do
+      image nil
+    end
   end
 
 end
