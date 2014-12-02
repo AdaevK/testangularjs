@@ -7,5 +7,9 @@ FactoryGirl.define do
         create(:photo, advert: advert)
       end
     end
+
+    factory :advert_invalid do
+      description nil
+    end
   end
 end
