@@ -3,7 +3,6 @@ class AdvertsController < ApplicationController
     @adverts = Advert.all
 
     respond_to do |format|
-      format.html
       format.json { render json: @adverts, status: 200 }
     end
   end

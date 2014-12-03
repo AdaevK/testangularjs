@@ -1,9 +1,17 @@
 doctype html
 html
   head
-    title= @title
+    title Angular Test
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  body
-    == yield
+  body ng-app='TestApp'
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          = link_to 'Доска объявлений', :root, class: 'navbar-brand', 'ui-sref'=>'home'
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li= link_to 'О проекте', :root, 'ui-sref'=>'about'
+    .container
+      == yield

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -8,10 +9,13 @@ gem 'pg'
 gem 'slim-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-ui-router'
 gem 'bootstrap-sass', '~> 3.3.1'
-gem 'autoprefixer-rails'
 
-gem 'angularjs-rails'
+gem 'angular-rails-templates'
+
+gem 'autoprefixer-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
