@@ -1,13 +1,13 @@
 class PhotosController < ApplicationController
+  respond_to :json
+
   def create
     photo = Photo.new( photo_params )
 
-    respond_to do |format|
-      if photo.save
-        format.json { render json: photo, status: :created }
-      else
-        format.json { render json: photo.errors, status: :unprocessable_entity }
-      end
+    if photo.save
+      render json: photo, status: :created
+    else
+      render json: photo.errors, status: :unprocessable_entity
     end
   end
 

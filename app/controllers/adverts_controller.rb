@@ -1,30 +1,26 @@
 class AdvertsController < ApplicationController
+  respond_to :json
+
   def index
     @adverts = Advert.all
 
-    respond_to do |format|
-      format.json { render json: @adverts, status: 200 }
-    end
+    render json: @adverts, status: 200
   end
 
   def create
     advert = Advert.new( advert_params )
 
-    respond_to do |format|
-      if advert.save
-        format.json { render json: advert, status: :created, location: advert }
-      else
-        format.json { render json: advert.errors, status: :unprocessable_entity }
-      end
+    if advert.save
+      render json: advert, status: :created, location: advert
+    else
+      render json: advert.errors, status: :unprocessable_entity
     end
   end
 
   def show
     @advert = Advert.find(params[:id])
 
-    respond_to do |format|
-      format.json { render json: @advert, status: 200, location: @advert }
-    end
+   render json: @advert, status: 200, location: @advert
   end
 
   private

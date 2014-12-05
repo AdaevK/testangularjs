@@ -1,0 +1,13 @@
+div( ng-controller = 'AdvertsController as advertsCtrl' )
+  .panel.panel-default
+    .panel-body
+      button.btn.btn-default ng-click='advertsCtrl.showForm = !advertsCtrl.showForm' {{advertsCtrl.showForm ? 'Закрыть' : 'Добавить объявление'}}
+      hr/
+      advert-form ng-show='advertsCtrl.showForm'
+    table.table.table-srtiped
+      tbody
+        tr ng-repeat="advert in advertsCtrl.adverts"
+          td
+            |{{advert.id}}
+          td
+            |{{advert.description | limitTo:160}}...

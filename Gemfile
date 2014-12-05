@@ -11,6 +11,7 @@ gem 'slim-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-resource'
 gem 'bootstrap-sass', '~> 3.3.1'
 
 gem 'angular-rails-templates'

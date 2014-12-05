@@ -6,24 +6,12 @@ RSpec.describe AdvertsController, :type => :controller do
 
     let(:advert){ FactoryGirl.create(:advert) }
 
-    context 'html' do
-      before :each do
-        get :index
-      end
-
-      it{ expect(response).to have_http_status :success }
-      it{ expect(response).to render_template :index }
-      it{ expect(assigns(:adverts)).to eq [advert] }
+    before :each do
+      get :index, format: :json
     end
 
-    context 'json' do
-      before :each do
-        get :index, format: :json
-      end
-
-      it{ expect(response).to have_http_status :success }
-      it{ expect(response.content_type).to eq Mime::JSON }
-    end
+    it{ expect(response).to have_http_status :success }
+    it{ expect(response.content_type).to eq Mime::JSON }
   end
 
   context 'POST create' do
