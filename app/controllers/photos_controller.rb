@@ -20,6 +20,10 @@ class PhotosController < ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:image)
+      if params[:photo]
+        params.require(:photo).permit(:image)
+      else
+        { image: params[:image] }
+      end
     end
 end

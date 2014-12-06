@@ -26,6 +26,6 @@ class AdvertsController < ApplicationController
   private
 
     def advert_params
-      params.require(:advert).permit( :description, :photos )
+      params.require(:advert).permit( :description, photo_ids: [] )
     end
 end

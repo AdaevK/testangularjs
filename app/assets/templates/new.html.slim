@@ -1,7 +1,41 @@
 h1 Новое объявление
+hr/
+form.form-horizontal[name='advertForm' ng-submit='advertForm.$valid && advertFormCtrl.addAdvert(advertForm)' novalidate]
+  fieldset class="form-group {{(advertForm.$submitted || advertForm.description.$touched) && advertForm.description.$error.required ? 'has-error' : ''}}"
+    label for='description' class='control-label col-sm-2'
+      strong Текст
+    span class='col-sm-9'
+      textarea[ng-model='advertFormCtrl.advert.description' class="form-control" id='description' name='description' required='']
+      div ng-show="advertForm.$submitted || advertForm.description.$touched"
+        span.control-label ng-show='advertForm.description.$error.required' Поле должно быть заполнено!
 
-form name='advertForm'
-  fieldset
-    label
-      strong Описание
-    textarea ng-model='advert.description' class="span12" style="height: 250px"
+  fieldset class='form-group'
+    div ng-if='uploader'
+      label for='photos' class='control-label col-sm-2'
+        strong Фотографии
+      span.col-sm-9
+        input.btn.btn-default#photos[type='file' nv-file-select uploader='uploader' multiple]
+        table.table
+          thead
+            tr
+              th
+              th Название
+              th Прогресс
+              th
+          tbody
+            tr ng-repeat='item in uploader.queue'
+              td
+                div ng-show='uploader.isHTML5' ng-thumb='{ file: item._file, height: 100 }'
+              td
+                strong
+                  |{{item.file.name}}
+              td
+                .progress style='margin-bottom: 0;'
+                  .progress-bar role='progressbar' ng-style="{ 'width': + item.progress + '%' }" style='width: 0%'
+              td
+                button.btn.btn-danger[type='button' ng-click='item.remove()']
+                  span.glyphicon.glyphicon-trash Удалить
+
+  fieldset class='form-group'
+    span class='col-sm-9 col-sm-offset-2 button-from-hell'
+      button class='btn btn-primary' Сохранить объявление
