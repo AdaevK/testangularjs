@@ -7,7 +7,10 @@ div.row ng-controller = 'AdvertsController as advertsCtrl'
     table.table.table-srtiped
       tbody
         tr ng-repeat="advert in advertsCtrl.adverts"
-          td
-            |{{advert.id}}
+          td.col-md-1
+            img ng-src='{{advert.image_url}}' alt='Фото'
           td
             |{{advert.description | limitTo:160}}...
+            br
+            br
+            button.btn.btn-success ui-sref='show' Открыть

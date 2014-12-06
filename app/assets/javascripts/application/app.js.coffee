@@ -10,9 +10,15 @@ app = angular.module( 'TestApp', ['ngResource', 'ui.router', 'templates', 'angul
       url: '/about',
       templateUrl: 'about.html'
     }
+    show = {
+      name: 'show',
+      url: '/show',
+      template: '<h1>SHOW</h1>'
+    }
 
     $stateProvider.state(home)
     $stateProvider.state(about)
+    $stateProvider.state(show)
     $urlRouterProvider.otherwise('/')
     $locationProvider.html5Mode({
       enabled: true,

@@ -4,7 +4,7 @@ class AdvertsController < ApplicationController
   def index
     @adverts = Advert.all
 
-    render json: @adverts, status: 200
+    render json: @adverts, serializer: AdvertsCollectionSerializer, status: 200
   end
 
   def create

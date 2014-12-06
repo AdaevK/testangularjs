@@ -21,7 +21,7 @@
 
 /public/assets
 /public/cache
-/public/system/*
+/public/system/*/*
 /spec/tmp/*
 
 # vim artifacts
