@@ -13,4 +13,4 @@ div.row ng-controller = 'AdvertsController as advertsCtrl'
             |{{advert.description | limitTo:160}}...
             br
             br
-            button.btn.btn-success ui-sref='show' Открыть
+            button.btn.btn-success href='{{advert.path}}' ui-sref='adverts({id:advert.id})' Открыть

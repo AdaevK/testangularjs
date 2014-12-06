@@ -11,9 +11,16 @@ app = angular.module( 'TestApp', ['ngResource', 'ui.router', 'templates', 'angul
       templateUrl: 'about.html'
     }
     show = {
-      name: 'show',
-      url: '/show',
-      template: '<h1>SHOW</h1>'
+      name: 'adverts',
+      url: '/adverts/{id:int}',
+      templateUrl: 'show.html'
+      controller: [ '$stateParams', 'Advert', ($stateParams, Advert) ->
+        store = this
+
+        Advert.show {id: $stateParams.id}, (data) ->
+          store.advert = data.advert
+      ],
+      controllerAs: 'advertShowCtrl'
     }
 
     $stateProvider.state(home)
@@ -28,11 +35,11 @@ app = angular.module( 'TestApp', ['ngResource', 'ui.router', 'templates', 'angul
 ]
 
 app.factory 'Advert', [ '$resource', ($resource) ->
-  $resource '/adverts/:id', { id: '@id' },
+  $resource '/api/adverts/:id', { id: '@id' },
     {
       'create':  { method: 'POST' },
       'index':   { method: 'GET', isArray: true },
-      'show':    { method: 'GET', isArray: false },
+      'show':    { method: 'GET' },
       'update':  { method: 'PUT' },
       'destroy': { method: 'DELETE' }
     }
@@ -64,7 +71,7 @@ app.controller 'AdvertsController', [ 'Advert', (Advert) ->
       controllerAs: 'advertFormCtrl',
       link: (scope, element, attrs) ->
         scope.uploader = new FileUploader({
-          url: '/photos',
+          url: '/api/photos',
           alias: 'image',
           method: 'POST',
           autoUpload: true,

@@ -1,13 +1,15 @@
 class AdvertSerializer < ActiveModel::Serializer
-  self.root = false
-
-  attributes :id, :description, :path, :image_url
+  attributes :id, :description, :path, :image_url, :images
 
   def path
-    advert_path(object)
+    api_advert_path(object)
   end
 
   def image_url
     object.photos.empty? ? '/system/missing.png' : object.photos.first.image.url
+  end
+
+  def images
+    object.photos.map{ |p| p.image.url }
   end
 end

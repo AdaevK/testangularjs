@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AdvertsController, :type => :controller do
+RSpec.describe Api::AdvertsController, :type => :controller do
 
   context "GET index" do
 

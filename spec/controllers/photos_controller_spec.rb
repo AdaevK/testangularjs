@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PhotosController, type: :controller do
+RSpec.describe Api::PhotosController, type: :controller do
 
   context 'POST create' do
     before :each do

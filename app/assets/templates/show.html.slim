@@ -1,0 +1,13 @@
+h2 Просмотр объявления
+hr
+  p
+    |{{advertShowCtrl.advert.description}}
+
+  .panel.panel-default ng-show='advertShowCtrl.advert.images.length'
+    .panel-haeder.text-center
+      h4 Фото
+    .panel-body
+      .photos
+        img ng-repeat='image in advertShowCtrl.advert.images' ng-src='{{image}}'
+hr
+button.btn.btn-default href='/' ui-sref='home' Назад
