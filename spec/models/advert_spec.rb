@@ -8,4 +8,8 @@ RSpec.describe Advert, :type => :model do
 
   it{ should validate_presence_of(:description) }
   it{ expect( advert ).to be_valid }
+
+  context 'default scope' do
+    it{ expect( Advert.default_scoped.order_values ).to eq ['created_at DESC'] }
+  end
 end
