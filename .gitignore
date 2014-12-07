@@ -23,6 +23,7 @@
 /public/cache
 /public/system/*/*
 /spec/tmp/*
+/advert_messeger/node_modules/
 
 # vim artifacts
 **.swp

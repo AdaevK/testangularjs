@@ -1,0 +1,10 @@
+{
+  "name": "adverts_messeger",
+  "version": "0.0.1",
+  "description": "real-time send message",
+  "dependencies": {
+    "socket.io": "~1.2.1",
+    "socket.io-redis": "~0.1.4",
+    "express": "~4.9.8"
+  }
+}

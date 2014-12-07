@@ -12,6 +12,7 @@ module Api
       advert = Advert.new( advert_params )
 
       if advert.save
+        $redis.publish( 'socket.io#*', [{type: 2, data: ['new', 1]},{}].to_msgpack )
         render json: advert, status: :created, location: [:api, advert]
       else
         render json: advert.errors, status: :unprocessable_entity

@@ -4,6 +4,8 @@ div.row ng-controller = 'AdvertsController as advertsCtrl'
       button.btn.btn-default ng-click='advertsCtrl.showForm = !advertsCtrl.showForm' {{advertsCtrl.showForm ? 'Закрыть' : 'Добавить объявление'}}
       br/
       advert-form ng-show='advertsCtrl.showForm'
+      br/
+      button.btn.btn-primary.btn-lg.btn-block ng-show='new_adverts' ng-click='readNew()' Есть новые объявления, {{new_adverts}} шт.
     table.table.table-srtiped
       tbody
         tr ng-repeat="advert in filteredAdverts"

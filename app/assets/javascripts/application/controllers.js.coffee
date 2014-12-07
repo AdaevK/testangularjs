@@ -1,10 +1,29 @@
 angular.module( 'TestApp.controllers', ['ngResource'] )
   .controller 'AdvertsController', [ '$scope', 'Advert', ($scope, Advert) ->
+    $scope.new_adverts = 0
+
     $scope.adverts = Advert.index()
     $scope.showForm = false
 
     $scope.itemsPerPage = 10
     $scope.currentPage = 1
+
+    this.socket = io('http://localhost:8000')
+    this.socket.on 'new', (message) ->
+      $scope.new_adverts += 1
+      $scope.$apply()
+
+    $scope.readNew = ->
+      $scope.adverts = Advert.index()
+      $scope.new_adverts = 0
+
+      $scope.adverts.$promise.then ->
+        $scope.totalItems = $scope.adverts.length
+        $scope.$watch 'currentPage + itemsPerPage', ->
+          begin = (($scope.currentPage - 1) * $scope.itemsPerPage)
+          end = begin + $scope.itemsPerPage
+
+          $scope.filteredAdverts = $scope.adverts.slice(begin, end)
 
     $scope.setPage = (page) ->
       $scope.currentPage = page

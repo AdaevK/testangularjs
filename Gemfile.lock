@@ -106,6 +106,10 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     minitest (5.4.3)
+    msgpack (0.5.9)
+    msgpack_rails (0.4.2)
+      activesupport (>= 3.0)
+      msgpack
     multi_json (1.10.1)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -146,6 +150,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    redis (3.1.0)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -228,6 +233,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   jquery-rails
+  msgpack_rails
   paperclip (~> 4.2)
   pg
   pry
@@ -235,6 +241,7 @@ DEPENDENCIES
   rails-assets-angular
   rails-assets-angular-resource
   rails-assets-angular-ui-router
+  redis
   rspec-rails (~> 3.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -17,5 +17,6 @@
 //= require angular-resource
 //= require angular-rails-templates
 //= require angular-file-upload
+//= require socket.io-1.2.1
 //= require_tree .
 //= require_tree ../templates
