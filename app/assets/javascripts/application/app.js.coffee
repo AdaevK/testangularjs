@@ -5,7 +5,8 @@ app = angular.module( 'TestApp', [
                      'angularFileUpload',
                      'TestApp.resources',
                      'TestApp.controllers',
-                     'TestApp.directives'
+                     'TestApp.directives',
+                     'ui.bootstrap.pagination'
 ] )
   .config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
     home = {

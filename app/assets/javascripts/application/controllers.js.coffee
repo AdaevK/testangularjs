@@ -1,8 +1,26 @@
 angular.module( 'TestApp.controllers', ['ngResource'] )
-  .controller 'AdvertsController', [ 'Advert', (Advert) ->
-    this.adverts = Advert.index()
-    this.showForm = false
+  .controller 'AdvertsController', [ '$scope', 'Advert', ($scope, Advert) ->
+    $scope.adverts = Advert.index()
+    $scope.showForm = false
+
+    $scope.itemsPerPage = 10
+    $scope.currentPage = 1
+
+    $scope.setPage = (page) ->
+      $scope.currentPage = page
+
+    $scope.pageCount = ->
+      Math.ceil( $scope.adverts.length / $scope.itemPerPage )
+
+    $scope.adverts.$promise.then ->
+      $scope.totalItems = $scope.adverts.length
+      $scope.$watch 'currentPage + itemsPerPage', ->
+        begin = (($scope.currentPage - 1) * $scope.itemsPerPage)
+        end = begin + $scope.itemsPerPage
+
+        $scope.filteredAdverts = $scope.adverts.slice(begin, end)
   ]
+
   .controller 'AdvertsFormController', [ 'Advert', (Advert) ->
     this.advert = {}
     this.uploader
@@ -17,6 +35,7 @@ angular.module( 'TestApp.controllers', ['ngResource'] )
       form.$setPristine()
       form.$setUntouched()
   ]
+
   .controller 'AdvertShowController', [ '$stateParams', 'Advert', ($stateParams, Advert) ->
     store = this
 

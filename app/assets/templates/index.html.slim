@@ -6,7 +6,7 @@ div.row ng-controller = 'AdvertsController as advertsCtrl'
       advert-form ng-show='advertsCtrl.showForm'
     table.table.table-srtiped
       tbody
-        tr ng-repeat="advert in advertsCtrl.adverts"
+        tr ng-repeat="advert in filteredAdverts"
           td.col-md-1
             img ng-src='{{advert.image_url}}' alt='Фото'
           td
@@ -14,3 +14,6 @@ div.row ng-controller = 'AdvertsController as advertsCtrl'
             br
             br
             button.btn.btn-success href='{{advert.path}}' ui-sref='adverts({id:advert.id})' Открыть
+    .row
+      .col-md-6.col-md-offset-3
+        pagination[total-items="totalItems" items-per-page='itemsPerPage' ng-model="currentPage" previous-text='Предыдущая' next-text='Следующая']
